@@ -36,7 +36,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 
 # download source file
 RUN cd /home \
-    && git clone https://github.com/wzwolf/emailtemplatenodejs.git
+    && git clone https://github.com/wzwolf/apiNodejs.git
 
 EXPOSE 3000
 EXPOSE 3001
