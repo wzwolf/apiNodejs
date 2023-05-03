@@ -37,6 +37,6 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 # download source file
 RUN cd /home \
     && git clone https://github.com/wzwolf/apiNodejs.git
+Run chmod +x ./setup.sh
 
-EXPOSE 3000
-EXPOSE 3001
+EXPOSE 8080
