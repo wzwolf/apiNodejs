@@ -4,7 +4,7 @@ FROM debian:latest
 MAINTAINER wzwolfx wzwolfx@gmail.com
 
 # Replace shell with bash so we can source files
-SHELL["/bin/bash","--login","-c"]
+SHELL ["/bin/bash","--login","-c"]
 
 # Set debconf to run non-interactively
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
