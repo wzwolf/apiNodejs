@@ -33,13 +33,17 @@ RUN apt update -y -q
 # RUN apt install curl wget -y
 # download and install nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-Run nvm install v18.16.0
+RUN nvm install v18.16.0 
 
 # download source file
 RUN cd /home \
     && git clone https://github.com/wzwolf/apiNodejs.git
-Run cd /home/apiNodejs 
-    #&& chmod +x ./setup.sh \
-    #&& ./setup.sh
+# installing required modedules
+RUN cd /home/apiNodejs \
+    && npm i \
+    && npm i -D jest nodemon \
+    && npm i -D typescript ts-node \
+    && npm i express body-parser cookie-parser compression cors \
+    && npm i -D @types/express @types/body-parser @types/cookie-parser @types/compression @types/cors \
 
 EXPOSE 8080
