@@ -44,6 +44,6 @@ RUN cd /home/apiNodejs \
     && npm i -D jest nodemon \
     && npm i -D typescript ts-node \
     && npm i express body-parser cookie-parser compression cors \
-    && npm i -D @types/express @types/body-parser @types/cookie-parser @types/compression @types/cors \
+    && npm i -D @types/express @types/body-parser @types/cookie-parser @types/compression @types/cors
 
 EXPOSE 8080
