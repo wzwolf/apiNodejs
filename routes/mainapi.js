@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const info = require('../models/mainModel');
 
 // get all entry
 router.get('/',(req,res) => {
