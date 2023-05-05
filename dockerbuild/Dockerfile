@@ -36,10 +36,10 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | b
 RUN nvm install v18.16.0 
 
 # download source file
-RUN cd /home \
+RUN cd /usr/local/bin \
     && git clone https://github.com/wzwolf/apiNodejs.git
 # installing required modedules
-RUN cd /home/apiNodejs \
+RUN cd /usr/local/bin/apiNodejs \
     && npm i \
     && npm i -D jest nodemon \
     && npm i -D typescript ts-node \
