@@ -42,8 +42,7 @@ RUN cd /usr/local/bin \
 RUN cd /usr/local/bin/apiNodejs \
     && npm i \
     && npm i -D jest nodemon \
-    && npm i -D typescript ts-node \
     && npm i express body-parser cookie-parser compression cors \
-    && npm i -D @types/express @types/body-parser @types/cookie-parser @types/compression @types/cors
+    && npm i mongodb
 
 EXPOSE 8080
