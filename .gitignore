@@ -1,3 +1,6 @@
+# 
+test/testapi.sh
+
 # Logs
 logs
 *.log

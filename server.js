@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
+// getting env var
 const mdb_url = process.env.MDB_URL;
 const app = express();
 
@@ -14,8 +15,8 @@ db.once('open',() => console.log('connected to db'));
 
 app.use(express.json())
 
-const mainApiRoute = require('./routes/mainapi');
-app.use('/main',mainApiRoute);
+const mainApiRouter = require('./routes/mainapi');
+app.use('/main',mainApiRouter);
 
 // start server
 app.listen(8080,() => console.log('Server has started'));
