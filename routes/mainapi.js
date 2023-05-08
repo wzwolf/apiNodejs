@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const info = require('../models/mainModel');
@@ -13,8 +14,8 @@ router.get('/', async (req,res) => {
 	}
 });
 // get one entry
-router.get('/:id',(req,res) => {
-	res.send('get one entry');
+router.get('/:id',getInfo,(req,res) => {
+	res.send('get one entry: '+res.info.name);
 });
 // create one entry
 router.post('/',async (req,res) => {
@@ -31,12 +32,48 @@ router.post('/',async (req,res) => {
 	}
 });
 // updating one entry
-router.patch('/',(req,res) => {
-	res.send('update entry');
+router.patch('/:id',getInfo ,async (req,res) => {
+	//res.send('update entry');
+	//update name
+	const updateInfo = {};
+	if (req.body.name != null) {
+		updateInfo.name = req.body.name;
+	}
+	//update info.info
+	if (req.body.info != null) {
+		updateInfo.info = req.body.info;
+	}
+	try {
+		const updatedInfo = await info.updateOne({_id: res.info._id},{$set: updateInfo});
+		res.json(updatedInfo)
+	} catch(err) {
+		res.status(400).json({message : err.message})
+	}
 });
 // delete one entry
-router.delete('/',(req,res) => {
-	res.send('delete entry');
+router.delete('/:id', getInfo, async (req,res) => {
+	//res.send('delete entry');
+	try{
+		await res.info.deleteOne()
+		res.json({ message:'Deleted Info'})
+	} catch(err){
+		res.status(500).json({ message:err.message})
+	}
 });
+
+async function getInfo(req,res,next) {
+	let selectedInfo;
+	try {
+		selectedInfo = await info.findById(req.params.id);
+		if(selectedInfo == null){
+			return res.status(404).json({message:'cannot find info'});
+		}
+	}catch(err){
+		return res.status(500).json({message:err.message});
+	}
+	res.info = selectedInfo;
+	next();
+}
+
 
 module.exports = router;
